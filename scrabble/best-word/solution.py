@@ -1,9 +1,4 @@
-import os
-
-srcPath = os.path.dirname(__file__)
-textPath = os.path.join(srcPath, "alice.txt")
-
-with open(textPath) as file:
+with open("alice.txt") as file:
     words = file.read().split() # Get words from file
 
 letterPoints = {
