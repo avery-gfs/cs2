@@ -1,1 +1,1 @@
-../fmt
+npx prettier --write . --prose-wrap always --ignore-path=""
