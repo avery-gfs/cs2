@@ -4,7 +4,7 @@ srcPath = os.path.dirname(__file__)
 textPath = os.path.join(srcPath, "alice.txt")
 
 with open(textPath) as file:
-    words = file.read().splitlines() # Get words from file
+    words = file.read().split() # Get words from file
 
 letterPoints = {
     "a":  1,
@@ -35,25 +35,8 @@ letterPoints = {
     "z": 10,
 }
 
-bestWord = None # Keep track of the highest scoring word
-bestScore = 0 # Keep track of the score of bestWord
-
-# Find the word with the highest Scrabble score
-
-for word in words:
-    score = 0
-
-    # Loop through each letter in the current word
-    for letter in word:
-        pass # Your code goes here!
-
-    if score > bestScore:
-        pass # Your code goes here!
-
-print(bestWord)
-
-# Challenge: for each letter of the alphabet, find the highest
-# scoring word for that letter. Don't loop through the list of
+# For each letter of the alphabet, find the highest scoring word
+# that starts with that letter. Don't loop through the list of
 # words more than once!
 
 bestWords = {} # Keep track of the highest scoring word for each letter
@@ -62,7 +45,15 @@ bestScores = {} # Keep track of the scores for bestWords
 # Find the word with the highest Scrabble score
 
 for word in words:
-    pass # Your code goes here!
+    firstLetter = word[0]
+    score = 0
+
+    for letter in word:
+        score += letterPoints[letter]
+
+    if bestScores.get(firstLetter, 0) < score:
+        bestWords[firstLetter] = word
+        bestScores[firstLetter] = score
 
 for letter in bestScores:
     print(letter, bestWords[letter], bestScores[letter])
