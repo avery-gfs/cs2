@@ -16,7 +16,7 @@ ratings = {}
 k = 20
 
 def winProb(rating, oppRating):
-    return 0.5 # YOUR CODE GOES HERE !!
+    return 1 / (1 + 10 ** ((oppRating - rating) / 400))
 
 # Initialize ratings for all teams
 for game in games:
@@ -30,10 +30,11 @@ for game in games:
     eHome = winProb(ratings[home], ratings[away])
     eAway = winProb(ratings[away], ratings[home])
 
-    # YOUR CODE GOES HERE !!
+    sHome = 1 if game["home_score"] > game["away_score"] else 0
+    sAway = 1 - sHome
 
-    ratings[home] += 0 # YOUR CODE GOES HERE !!
-    ratings[away] += 0 # YOUR CODE GOES HERE !!
+    ratings[home] += k * (sHome - eHome)
+    ratings[away] += k * (sAway - eAway)
 
 # Display team names and ratings sorted from highest to lowest
 for (team, rating) in sorted(ratings.items(), key = lambda i: i[1], reverse = True):
