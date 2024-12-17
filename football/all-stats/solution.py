@@ -24,22 +24,16 @@ class TeamStats:
     def addStats(self, game):
         self.numGames += 1
 
-        homeScore = game["home_score"]
-        awayScore = game["away_score"]
+        isHomeTeam = self.name == game["home_team"]
+        isHomeWin = game["home_score"] > game["away_score"]
 
-        if self.name == game["home_team"]:
-            if homeScore > awayScore:
-                self.wins += 1
-            else:
-                self.losses += 1
+        if isHomeTeam == isHomeWin:
+            self.wins += 1
         else:
-            if homeScore > awayScore:
-                self.losses += 1
-            else:
-                self.wins += 1
+            self.losses += 1
 
-        self.pointsScored += homeScore
-        self.pointsAllowed += awayScore
+        self.pointsScored += game["home_score"]
+        self.pointsAllowed += game["away_score"]
 
     # Calculate the win fraction
     def winPercent(self):
