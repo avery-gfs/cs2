@@ -30,15 +30,15 @@ results = byTeam.group_by("team").agg(
     losses = pl.col("is_win").not_().sum(),
 )
 
-print(results)
+# print(results)
 
-# stats = results.group_by("team").agg(
-#     pl.col("num_games", "wins", "losses").sum(),
-# ).with_columns(
-#     win_percentage = (pl.col("wins") / pl.col("num_games")).round(3),
-# ).sort(
-#     pl.col("win_percentage"),
-#     descending = True,
-# )
+stats = results.group_by("team").agg(
+    pl.col("num_games", "wins", "losses").sum(),
+).with_columns(
+    win_percentage = (pl.col("wins") / pl.col("num_games")).round(3),
+).sort(
+    pl.col("win_percentage"),
+    descending = True,
+)
 
-# print(stats)
+print(stats)
