@@ -1,7 +1,7 @@
 import csv
 
 # Read game data
-with open("scores.csv") as file:
+with open("games.csv") as file:
     games = list(csv.DictReader(file))
 
 # Convert scores from strings to numbers

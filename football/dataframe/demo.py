@@ -4,7 +4,7 @@ import polars as pl
 pl.Config(tbl_rows=32, tbl_cols=10)
 
 # Read CSV data as a dataframe
-games = pl.read_csv("scores.csv")
+games = pl.read_csv("games.csv")
 print(games)
 
 # Get the win / loss and scoring results for the home and away teams in each game
