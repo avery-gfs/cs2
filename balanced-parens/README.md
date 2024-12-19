@@ -32,3 +32,5 @@ The following properties are necessary (but not sufficient) for a paren expressi
 2) The expression must contain an even number of characters.
 
 3) The expression must contain an equal number of `(` and `)` characters.
+
+Write code that determines whether a given paren expression is balanced.
