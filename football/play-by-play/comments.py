@@ -44,6 +44,8 @@ with open('rushing.csv', newline='') as csvfile:
     
         runners[runner].add_play(rush)  # Adds the play to the Runningback object
 
+print(runners)
+
 #TASK 1: How many rushing yards does Saquon Barkley have? (26-S.BARKLEY)
 #TASK 2: Finish this QB class:
 
