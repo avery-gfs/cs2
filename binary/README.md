@@ -2,6 +2,8 @@
 - Binary: base `2` https://en.wikipedia.org/wiki/Binary_number
 - Hexadecimal: base `16` https://en.wikipedia.org/wiki/Hexadecimal
 
+Powers of 2: `1 2 4 8 16 32 64 128 ...`
+
 | decimal<br/> | binary<br/> | hexadecimal<br/> |
 | -----------: | ----------: | ---------------: |
 |            0 |           0 |                0 |
