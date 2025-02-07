@@ -1,6 +1,5 @@
-Powers of `2`:
+Powers of 2:
 
-```
 1
 2
 4
@@ -10,20 +9,16 @@ Powers of `2`:
 64
 128
 256
-```
 
-Powers of `16`:
+Powers of 16:
 
-```
 1
 16
 256
-```
 
 Comparison:
 
 | decimal | binary | hex |
-| ------: | -----: | --: |
 |       0 |      0 |   0 |
 |       1 |      1 |   1 |
 |       2 |     10 |   2 |
@@ -61,48 +56,48 @@ Practice:
 
 Convert from decimal to binary:
 
-`35`
+35:
 
-`61`
+61:
 
-`127`
+127:
 
 Convert from binary to decimal:
 
-`101000`
+101000:
 
-`111111`
+111111:
 
-`1000111`
+1000111:
 
 Convert from decimal to hex:
 
-`35`
+35:
 
-`58`
+58:
 
-`127`
+127:
 
 Convert from hex to decimal:
 
-`a4`
+a4:
 
-`2f`
+2f:
 
-`40`
+40:
 
 Convert from binary to hex:
 
-`101000`
+101000:
 
-`111111`
+111111:
 
-`1000111`
+1000111:
 
 Convert from hex to binary:
 
-`a4`
+a4:
 
-`2f`
+2f:
 
-`40`
+40:
