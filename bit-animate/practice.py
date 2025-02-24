@@ -81,4 +81,4 @@ bounce = [
     "1800000000000000",
 ]
 
-animate(gfs, 2)
+animate(bounce, 10)
