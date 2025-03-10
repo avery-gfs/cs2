@@ -32,13 +32,13 @@ $$
 For orbits, when $G = 1$ we have the equations:
 
 $$
-force = \frac{mass_{other}}{r^2}
+r = \sqrt{\Delta x^2 + \Delta y^2}
 $$
 
 $$
-a_x = \frac{\Delta x \cdot force}{r}
+a_x = \frac{\Delta x \cdot \mathrm{mass}_{\mathrm{other}}}{r^3}
 $$
 
 $$
-a_y = \frac{\Delta y \cdot force}{r}
+a_y = \frac{\Delta y \cdot \mathrm{mass}_{\mathrm{other}}}{r^3}
 $$
