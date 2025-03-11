@@ -20,11 +20,11 @@ for game in games:
     homeTeam = game["home_team"]
     awayTeam = game["away_team"]
 
-    wins.setdefault(homeTeam, 0)
-    wins.setdefault(awayTeam, 0)
+    wins[homeTeam] = 0
+    wins[awayTeam] = 0
 
-    losses.setdefault(homeTeam, 0)
-    losses.setdefault(awayTeam, 0)
+    losses[homeTeam] = 0
+    losses[awayTeam] = 0
 
 # Update stats for home and away teams for each game
 for game in games:
