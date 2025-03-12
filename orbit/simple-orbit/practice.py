@@ -1,18 +1,21 @@
 import math
 import pygame
 
+# Goal: simulate a single planet in orbit aroud a stationary sun.
+# See the image in the README.md file for the equations to use.
+
 # Gravity
 g = 1
 # Simulation time delta
 dt = 1
 
-sunX = 400
-sunY = 400
-sunMass = 2000
+sunX = 300
+sunY = 300
+sunMass = 1000
 
 pygame.init()
-# Screen is 800x800 pixels
-screen = pygame.display.set_mode((800, 800))
+# Screen is 600x600 pixels
+screen = pygame.display.set_mode((600, 600))
 clock = pygame.time.Clock()
 
 class Planet():
@@ -27,7 +30,7 @@ class Planet():
         # Update planet data based on sun variables and gravity equations
         pass
 
-planet = Planet(100, 400, 0, -2)
+planet = Planet(100, 300, 0, -1.5)
 
 running = True
 
