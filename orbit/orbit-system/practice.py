@@ -35,16 +35,16 @@ class Planet():
                 ax += 0 # Change
                 ay += 0 # Change
 
-        vx = 0 # Change
-        vy = 0 # Change
+        vx = self.vx # Change
+        vy = self.vy # Change
         
-        x = 0 # Change
-        y = 0 # Change
+        x = self.x # Change
+        y = self.y # Change
 
         return Planet(x, y, vx, vy, self.mass)
 
 planets = [
-    Planet(300, 300, 0.012, -0.0432, 1000),
+    Planet(300, 300, 0.012, -0.0432, 1000), # Why did I choose these velocities?
     Planet(300, 400, -2.4, 0, 5),
     Planet(550, 300, 0, 2, 20),
     Planet(565, 300, 0, 3.2, 1),
