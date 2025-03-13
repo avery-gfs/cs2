@@ -1,20 +1,20 @@
 import math
 import pygame
 
-# Gravity
-g = 1
-# Simulation time delta
-dt = 1
-
 pygame.init()
-# Screen is 800x800 pixels
-screen = pygame.display.set_mode((800, 800))
+# Screen is 600x600 pixels
+screen = pygame.display.set_mode((600, 600))
 clock = pygame.time.Clock()
+
+ax = 0
+ay = 1
 
 class Projectile():
     def __init__(self, x, y, vx, vy):
-        # Store data in projectile object
-        pass
+        self.x = x
+        self.y = y
+        self.vx = vx
+        self.vy = vy
 
     def draw(self):
         pygame.draw.circle(screen, "#ff9c7a", (self.x, self.y), 10)
@@ -23,7 +23,7 @@ class Projectile():
         # Update projectile data based on motion equations
         pass
 
-proj = Projectile(100, 700, 10, -30)
+proj = Projectile(50, 550, 5, -25)
 
 running = True
 

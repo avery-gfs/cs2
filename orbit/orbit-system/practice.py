@@ -1,11 +1,6 @@
 import math
 import pygame
 
-# Gravity
-g = 1
-# Simulation time delta
-dt = 1
-
 pygame.init()
 # Screen is 800x800 pixels
 screen = pygame.display.set_mode((800, 800))
@@ -13,22 +8,26 @@ clock = pygame.time.Clock()
 
 class Planet():
     def __init__(self, x, y, vx, vy, mass):
-        # Store data in planet object
-        pass
+        self.x = x
+        self.y = y
+        self.vx = vx
+        self.vy = vy
+        self.mass = mass
 
     def draw(self):
         # Scale formula is kinda arbitrary, for aesthetics
         radius = 3 * self.mass ** 0.3
         pygame.draw.circle(screen, "#ff9c7a", (self.x, self.y), radius)
 
-    def spawn(self, others):
+    def spawn(self, planets):
         # Generate a new planet object with update values based on list
         # of current objects and gravity equations
 
         ax = 0
         ay = 0
 
-        for other in others:
+        for planet in planets:
+            # Make sure we aren't calculating the gravity between a planet and itself
             if True:    # Change
                 dx = 0  # Change
                 dy = 0  # Change
@@ -45,11 +44,10 @@ class Planet():
         return Planet(x, y, vx, vy, self.mass)
 
 planets = [
-    Planet(400, 400, 0.01125, -0.0267, 2000),
-    Planet(400, 500, -4.5, 0, 5),
-    Planet(700, 100, 0, 2, 1),
-    Planet(750, 390, 0, 2.4, 20),
-    Planet(770, 390, 0, 3.4, 1),
+    Planet(300, 300, 0.012, -0.0432, 1000),
+    Planet(300, 400, -2.4, 0, 5),
+    Planet(550, 300, 0, 2, 20),
+    Planet(565, 300, 0, 3.2, 1),
 ]
 
 running = True
