@@ -25,6 +25,23 @@ class Planet():
         # Generate a new planet object with update values based on list
         # of current objects and gravity equations
 
+        ax = 0
+        ay = 0
+
+        for other in others:
+            if True:    # Change
+                dx = 0  # Change
+                dy = 0  # Change
+                r = 0   # Change
+                ax += 0 # Change
+                ay += 0 # Change
+
+        vx = 0 # Change
+        vy = 0 # Change
+        
+        x = 0 # Change
+        y = 0 # Change
+
         return Planet(x, y, vx, vy, self.mass)
 
 planets = [
