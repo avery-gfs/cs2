@@ -24,7 +24,8 @@ class Planet():
     def spawn(self, others):
         # Generate a new planet object with update values based on list
         # of current objects and gravity equations
-        pass
+
+        return Planet(x, y, vx, vy, self.mass)
 
 planets = [
     Planet(400, 400, 0.01125, -0.0267, 2000),
