@@ -2,8 +2,8 @@ import math
 import pygame
 
 pygame.init()
-# Screen is 800x800 pixels
-screen = pygame.display.set_mode((800, 800))
+# Screen is 600x600 pixels
+screen = pygame.display.set_mode((600, 600))
 clock = pygame.time.Clock()
 
 class Planet():
