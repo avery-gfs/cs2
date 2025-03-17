@@ -6,24 +6,26 @@ pygame.init()
 screen = pygame.display.set_mode((600, 600))
 clock = pygame.time.Clock()
 
-ax = 0
-ay = 1
-
 class Projectile():
     def __init__(self, x, y, vx, vy):
         self.x = x
         self.y = y
         self.vx = vx
         self.vy = vy
+        self.ax = 0 # Change
+        self.ay = 0 # Change
 
     def draw(self):
         pygame.draw.circle(screen, "#ff9c7a", (self.x, self.y), 10)
 
     def move(self):
-        # Update projectile data based on motion equations
-        pass
+        # Update position and velocty based on acceleration
+        self.vx += 0 # Change
+        self.vy += 0 # Change
+        self.x += 0 # Change
+        self.y += 0 # Change
 
-proj = Projectile(50, 550, 5, -25)
+proj = Projectile(50, 550, 10, -25)
 
 running = True
 

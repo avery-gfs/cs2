@@ -28,19 +28,19 @@ class Planet():
 
         for planet in planets:
             # Make sure we aren't calculating the gravity between a planet and itself
-            if True: # Change
-                dx = 0 # Change
-                dy = 0 # Change
-                r = 0 # Change
-                self.ax += 0 # Change
-                self.ay += 0 # Change
+            if planet != self:
+                dx = planet.x - self.x
+                dy = planet.y - self.y
+                r = math.sqrt(dx ** 2 + dy ** 2)
+                self.ax += dx * planet.mass / r ** 3
+                self.ay += dy * planet.mass / r ** 3
 
     def move(self):
         # Update position and velocty based on acceleration
-        self.vx += 0 # Change
-        self.vy += 0 # Change
-        self.x += 0 # Change
-        self.y += 0 # Change
+        self.vx += self.ax
+        self.vy += self.ay
+        self.x += self.vx
+        self.y += self.vy
 
 planets = [
     Planet(300, 300, 0.012, -0.0432, 1000), # Why did I choose these velocities?

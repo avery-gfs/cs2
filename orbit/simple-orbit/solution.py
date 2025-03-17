@@ -22,18 +22,18 @@ class Planet():
 
     def calcAcceleration(self):
         # Calculate acceleration from gravity equation
-        dx = 0 # Change
-        dy = 0 # Change
-        r = 0 # Change
-        self.ax = 0 # Change
-        self.ay = 0 # Change
+        dx = sunX - self.x
+        dy = sunY - self.y
+        r = math.sqrt(dx ** 2 + dy ** 2)
+        self.ax = dx * sunMass / r ** 3
+        self.ay = dy * sunMass / r ** 3
 
     def move(self):
         # Update position and velocty based on acceleration
-        self.vx += 0 # Change
-        self.vy += 0 # Change
-        self.x += 0 # Change
-        self.y += 0 # Change
+        self.vx += self.ax
+        self.vy += self.ay
+        self.x += self.vx
+        self.y += self.vy
 
 planet = Planet(100, 300, 0, -1.5)
 
