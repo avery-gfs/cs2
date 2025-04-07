@@ -3,25 +3,25 @@
 #
 # See https://en.wikipedia.org/wiki/Euclidean_algorithm
 def gcd(a, b):
-	return 1 # Change
+    return 1 # Change
 
 class Fraction:
-	def __init__(self, num, den):
-		self.num = num
-		self.den = den
+    def __init__(self, num, den):
+        self.num = num
+        self.den = den
 
-	def __repr__(self):
-		return f"?/?"
+    def __repr__(self):
+        return f"?/?"
 
-	# Calculate the value of the fraction as a single number
-	def value(self):
-		pass
+    # Calculate the value of the fraction as a single number
+    def value(self):
+        pass
 
-	def __mul__(self, other):
-		return Fraction(1, 1) # Change
+    def __mul__(self, other):
+        return Fraction(1, 1) # Change
 
-	def __add__(self, other):
-		return Fraction(1, 1) # Change
+    def __add__(self, other):
+        return Fraction(1, 1) # Change
 
 a = Fraction(1, 2)
 
