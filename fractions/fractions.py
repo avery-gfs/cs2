@@ -10,18 +10,18 @@ class Fraction:
 		self.num = num
 		self.den = den
 
+	def __repr__(self):
+		return f"?/?"
+
 	# Calculate the value of the fraction as a single number
 	def value(self):
 		pass
 
-	def __add__(self, other):
-		pass
-
 	def __mul__(self, other):
-		pass
+		return Fraction(1, 1) # Change
 
-	def __repr__(self):
-		return "/"
+	def __add__(self, other):
+		return Fraction(1, 1) # Change
 
 a = Fraction(1, 2)
 
