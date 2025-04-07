@@ -11,7 +11,7 @@ class Fraction:
         self.den = den
 
     def __repr__(self):
-        return f"?/?"
+        return f"{self.num}/{self.den}"
 
     # Calculate the value of the fraction as a single number
     def value(self):
