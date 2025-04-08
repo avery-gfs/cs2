@@ -20,7 +20,8 @@ initial = [
 height = len(initial)   # Number of rows
 width = len(initial[0]) # Number of columns
 
-# Generate an empty board
+# Generate an empty board with height and width matching the
+# initial board and filled with zeros
 def blankBoard():
     # We can't use [[0] * width] * height
     # cause of silly Python aliasing
