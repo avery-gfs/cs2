@@ -17,7 +17,8 @@ const initial = [
 const height = initial.length   // Number of rows
 const width = initial[0].length // Number of columns
 
-// Generate an empty board
+// Generate an empty board with height and width matching the
+// initial board and filled with zeros
 function blankBoard() {
   // Somehow even worse than Python
   return Array(height).fill(null).map(() => Array(width).fill(0));
