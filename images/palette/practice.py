@@ -29,6 +29,9 @@ for y in range(im.height):
 	for x in range(im.width):
 		imgColor = im.getpixel((x, y))
 
+		minColor = None
+		minDist = None
+
 		# Your code goes here!
 
 		output.putpixel((x, y), minColor)
