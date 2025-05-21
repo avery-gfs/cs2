@@ -165,7 +165,7 @@ shape: (346, 6)
 
 ```py
 cities.with_columns(
-	((pl.col("pop2024") / pl.col("pop2020") - 1) * 100).round(2).alias("pctChange")
+	(pl.col("pop2024") / pl.col("pop2020") * 100 - 100).round(2).alias("pctChange")
 )
 ```
 
