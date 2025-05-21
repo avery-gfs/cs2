@@ -20,6 +20,8 @@ https://survey.stackoverflow.co/2018
 
 https://ww2.amstat.org/censusatschool/RandomSampleForm.cfm
 
+https://matplotlib.org/
+
 ## Polars Cheatsheet
 
 ```py
