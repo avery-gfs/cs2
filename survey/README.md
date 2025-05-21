@@ -6,6 +6,20 @@ pip install altair
 pip install vl-convert-python
 ```
 
+## Links
+
+https://altair-viz.github.io/altair-tutorial/README.html
+
+https://docs.pola.rs/
+
+https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population
+
+https://wikitable2csv.ggor.de/
+
+https://survey.stackoverflow.co/2018
+
+https://ww2.amstat.org/censusatschool/RandomSampleForm.cfm
+
 ## Polars Cheatsheet
 
 ```py
