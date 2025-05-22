@@ -141,7 +141,7 @@ shape: (346, 2)
 
 ```py
 withPopDensity = cities.with_columns(
-	(pl.col("pop2024") / pl.col("area")).round(1).alias("popDensity")
+    (pl.col("pop2024") / pl.col("area")).round(1).alias("popDensity")
 )
 
 print(withPopDensity)
@@ -170,7 +170,7 @@ shape: (346, 6)
 
 ```py
 withPctChange = cities.with_columns(
-	(pl.col("pop2024") / pl.col("pop2020") * 100 - 100).round(2).alias("pctChange")
+    (pl.col("pop2024") / pl.col("pop2020") * 100 - 100).round(2).alias("pctChange")
 )
 
 print(withPctChange)
@@ -365,10 +365,10 @@ shape: (346, 5)
 
 ```py
 cityCounts = (
-	cities
-		.group_by("state")
-		.agg(pl.len().alias("count"))
-		.sort("count", descending=True)
+    cities
+        .group_by("state")
+        .agg(pl.len().alias("count"))
+        .sort("count", descending=True)
 )
 
 print(cityCounts)
@@ -397,11 +397,11 @@ shape: (46, 2)
 
 ```py
 popChanges = (
-	cities
-		.with_columns((pl.col("pop2024") - pl.col("pop2020")).alias("deltaPop"))
-		.group_by("state")
-		.agg(pl.col("deltaPop").sum())
-		.sort("deltaPop", descending=True)
+    cities
+        .with_columns((pl.col("pop2024") - pl.col("pop2020")).alias("deltaPop"))
+        .group_by("state")
+        .agg(pl.col("deltaPop").sum())
+        .sort("deltaPop", descending=True)
 )
 
 print(popChanges)
