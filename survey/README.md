@@ -60,7 +60,8 @@ shape: (346, 5)
 ### Get Rows
 
 ```py
-cities.head(5)
+first5 = cities.head(5)
+print(first5)
 ```
 
 ```
@@ -79,7 +80,8 @@ shape: (5, 5)
 ```
 
 ```py
-cities.tail(5)
+last5 = cities.tail(5)
+print(last5)
 ```
 
 ```
@@ -100,7 +102,7 @@ shape: (5, 5)
 ### Get Column Names
 
 ```py
-cities.columns
+print(cities.columns)
 ```
 
 ```
@@ -110,7 +112,8 @@ cities.columns
 ### Select Columns
 
 ```py
-cities.select("city", "pop2024")
+twoColumns = cities.select("city", "pop2024")
+print(twoColumns)
 ```
 
 ```
@@ -137,9 +140,11 @@ shape: (346, 2)
 ### Add Columns
 
 ```py
-cities.with_columns(
+withPopDensity = cities.with_columns(
 	(pl.col("pop2024") / pl.col("area")).round(1).alias("popDensity")
 )
+
+print(withPopDensity)
 ```
 
 ```
@@ -164,9 +169,11 @@ shape: (346, 6)
 ```
 
 ```py
-cities.with_columns(
+withPctChange = cities.with_columns(
 	(pl.col("pop2024") / pl.col("pop2020") * 100 - 100).round(2).alias("pctChange")
 )
+
+print(withPctChange)
 ```
 
 ```
@@ -193,7 +200,8 @@ shape: (346, 6)
 ### Remove Columns
 
 ```py
-cities.drop("pop2020", "area")
+threeColumns = cities.drop("pop2020", "area")
+print(threeColumns)
 ```
 
 ```
@@ -220,7 +228,8 @@ shape: (346, 3)
 ### Rename Columns
 
 ```py
-cities.rename({"area": "areaSqMiles"})
+renamed = cities.rename({"area": "areaSqMiles"})
+print(renamed)
 ```
 
 ```
@@ -247,7 +256,8 @@ shape: (346, 5)
 ### Filter Rows
 
 ```py
-cities.filter(pl.col("state") == "TX")
+txCities = cities.filter(pl.col("state") == "TX")
+print(txCities)
 ```
 
 ```
@@ -272,7 +282,8 @@ shape: (44, 5)
 ```
 
 ```py
-cities.filter(pl.col("pop2024") > 1000000)
+bigCities = cities.filter(pl.col("pop2024") > 1000000)
+print(bigCities)
 ```
 
 ```
@@ -299,7 +310,8 @@ shape: (11, 5)
 ### Sort Rows
 
 ```py
-cities.sort("city")
+alphabetical = cities.sort("city")
+print(alphabetical)
 ```
 
 ```
@@ -324,7 +336,8 @@ shape: (346, 5)
 ```
 
 ```py
-cities.sort("area", descending=True)
+byArea = cities.sort("area", descending=True)
+print(byArea)
 ```
 
 ```
@@ -351,12 +364,14 @@ shape: (346, 5)
 ### Aggregation
 
 ```py
-(
+cityCounts = (
 	cities
 		.group_by("state")
 		.agg(pl.len().alias("count"))
 		.sort("count", descending=True)
 )
+
+print(cityCounts)
 ```
 
 ```
@@ -381,13 +396,15 @@ shape: (46, 2)
 ```
 
 ```py
-(
+popChanges = (
 	cities
 		.with_columns((pl.col("pop2024") - pl.col("pop2020")).alias("deltaPop"))
 		.group_by("state")
 		.agg(pl.col("deltaPop").sum())
 		.sort("deltaPop", descending=True)
 )
+
+print(popChanges)
 ```
 
 ```
@@ -430,14 +447,14 @@ chart.save("pop-bars.png", scale_factor = 2)
 ![](pop-bars.png)
 
 ```py
-counts = (
+cityCounts = (
     cities
         .group_by("state")
         .agg(pl.len().alias("cities"))
         .sort("cities", descending = True)
 )
 
-chart = alt.Chart(counts).mark_bar().encode(alt.X("state", sort = "-y"), alt.Y("cities"))
+chart = alt.Chart(cityCounts).mark_bar().encode(alt.X("state", sort = "-y"), alt.Y("cities"))
 chart.save("city-counts.png", scale_factor = 2)
 ```
 
