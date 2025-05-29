@@ -137,6 +137,40 @@ shape: (346, 2)
 └─────────────┴─────────┘
 ```
 
+### Get Single Column
+
+```py
+states = cities.get_column("state") # Get column as a polars series
+print(states)
+```
+
+```
+shape: (346,)
+Series: 'state' [str]
+[
+    "NY"
+    "CA"
+    "IL"
+    "TX"
+    "AZ"
+    …
+    "FL"
+    "WA"
+    "TX"
+    "CA"
+    "FL"
+]
+```
+
+```py
+states = cities.get_column("state").to_list() # Get column as a list
+print(states)
+```
+
+```
+['NY', 'CA', 'IL', 'TX', 'AZ', ...]
+```
+
 ### Add Columns
 
 ```py
@@ -367,6 +401,40 @@ shape: (346, 5)
 cityCounts = (
     cities
         .group_by("state")
+        .agg(pl.col("pop2024").sum())
+        .sort("pop2024", descending=True)
+)
+
+print(cityCounts)
+```
+
+```
+shape: (46, 2)
+┌───────┬──────────┐
+│ state ┆ pop2024  │
+│ ---   ┆ ---      │
+│ str   ┆ i64      │
+╞═══════╪══════════╡
+│ CA    ┆ 20143855 │
+│ TX    ┆ 14357348 │
+│ NY    ┆ 9420425  │
+│ FL    ┆ 5775436  │
+│ AZ    ┆ 4712343  │
+│ …     ┆ …        │
+│ RI    ┆ 194706   │
+│ MS    ┆ 141449   │
+│ ND    ┆ 136285   │
+│ MT    ┆ 121483   │
+│ NH    ┆ 116386   │
+└───────┴──────────┘
+```
+
+*Note that `pl.sum("pop2024")` can be used as a shorthand for `pl.col("pop2024").sum()`*.
+
+```py
+cityCounts = (
+    cities
+        .group_by("state")
         .agg(pl.len().alias("count"))
         .sort("count", descending=True)
 )
@@ -395,36 +463,15 @@ shape: (46, 2)
 └───────┴───────┘
 ```
 
+*Note that we could also solve the previous example using the `value_counts()` function*.
+
 ```py
-popChanges = (
+cityCounts = (
     cities
-        .with_columns((pl.col("pop2024") - pl.col("pop2020")).alias("deltaPop"))
-        .group_by("state")
-        .agg(pl.col("deltaPop").sum())
-        .sort("deltaPop", descending=True)
+        .get_column("state")
+        .value_counts()
+        .sort("count", descending=True)
 )
-
-print(popChanges)
-```
-
-```
-┌───────┬──────────┐
-│ state ┆ deltaPop │
-│ ---   ┆ ---      │
-│ str   ┆ i64      │
-╞═══════╪══════════╡
-│ TX    ┆ 682767   │
-│ FL    ┆ 431452   │
-│ AZ    ┆ 226662   │
-│ NC    ┆ 164454   │
-│ NV    ┆ 121579   │
-│ …     ┆ …        │
-│ MD    ┆ -17437   │
-│ PA    ┆ -23891   │
-│ IL    ┆ -24017   │
-│ LA    ┆ -37968   │
-│ NY    ┆ -332855  │
-└───────┴──────────┘
 ```
 
 ## Graphing Tutorial
@@ -439,7 +486,7 @@ cities = pl.read_csv("cities.csv") # Load dataframe from CSV
 ### Bar Charts
 
 ```py
-topCities = cities.sort("pop2024", descending = True).head(20)
+topCities = cities.head(20)
 chart = alt.Chart(topCities).mark_bar().encode(alt.X("pop2024"), alt.Y("city", sort="-x"))
 chart.save("pop-bars.png", scale_factor = 2)
 ```
@@ -463,7 +510,7 @@ chart.save("city-counts.png", scale_factor = 2)
 ### Scatter Plot
 
 ```py
-top25 = cities.sort("pop2024", descending = True).head(25)
+top25 = cities.head(25)
 
 chart = alt.Chart(top25).mark_circle(size = 40).encode(
     alt.X("area"),
