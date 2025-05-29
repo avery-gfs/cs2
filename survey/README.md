@@ -59,6 +59,8 @@ shape: (346, 5)
 
 ### Get Rows
 
+#### From the Start
+
 ```py
 first5 = cities.head(5)
 print(first5)
@@ -78,6 +80,8 @@ shape: (5, 5)
 │ Phoenix     ┆ AZ    ┆ 1673164 ┆ 1608139 ┆ 518.0 │
 └─────────────┴───────┴─────────┴─────────┴───────┘
 ```
+
+#### From the End
 
 ```py
 last5 = cities.tail(5)
@@ -139,8 +143,10 @@ shape: (346, 2)
 
 ### Get Single Column
 
+#### As a Polars Series
+
 ```py
-states = cities.get_column("state") # Get column as a polars series
+states = cities.get_column("state")
 print(states)
 ```
 
@@ -162,8 +168,10 @@ Series: 'state' [str]
 ]
 ```
 
+#### As a List
+
 ```py
-states = cities.get_column("state").to_list() # Get column as a list
+states = cities.get_column("state").to_list()
 print(states)
 ```
 
@@ -172,6 +180,8 @@ print(states)
 ```
 
 ### Add Columns
+
+#### Population Density
 
 ```py
 withPopDensity = cities.with_columns(
@@ -201,6 +211,8 @@ shape: (346, 6)
 │ Sunrise     ┆ FL    ┆ 100128  ┆ 97335   ┆ 16.2  ┆ 6180.7     │
 └─────────────┴───────┴─────────┴─────────┴───────┴────────────┘
 ```
+
+#### Population Change
 
 ```py
 withPctChange = cities.with_columns(
@@ -289,6 +301,8 @@ shape: (346, 5)
 
 ### Filter Rows
 
+#### Texas States
+
 ```py
 txCities = cities.filter(pl.col("state") == "TX")
 print(txCities)
@@ -314,6 +328,8 @@ shape: (44, 5)
 │ San Angelo    ┆ TX    ┆ 100159  ┆ 99893   ┆ 59.7  │
 └───────────────┴───────┴─────────┴─────────┴───────┘
 ```
+
+#### Big Cities
 
 ```py
 bigCities = cities.filter(pl.col("pop2024") > 1000000)
@@ -343,6 +359,8 @@ shape: (11, 5)
 
 ### Sort Rows
 
+#### Alphabetically Ascending
+
 ```py
 alphabetical = cities.sort("city")
 print(alphabetical)
@@ -368,6 +386,8 @@ shape: (346, 5)
 │ Yuma          ┆ AZ    ┆ 103559  ┆ 95548   ┆ 120.7 │
 └───────────────┴───────┴─────────┴─────────┴───────┘
 ```
+
+#### Numerically Descending
 
 ```py
 byArea = cities.sort("area", descending=True)
@@ -396,6 +416,8 @@ shape: (346, 5)
 ```
 
 ### Aggregation
+
+#### Sum
 
 ```py
 cityCounts = (
@@ -430,6 +452,8 @@ shape: (46, 2)
 ```
 
 Note that `pl.sum("pop2024")` can be used as a shorthand for `pl.col("pop2024").sum()`.
+
+#### Counts
 
 ```py
 cityCounts = (
