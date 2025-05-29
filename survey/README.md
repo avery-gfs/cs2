@@ -429,7 +429,7 @@ shape: (46, 2)
 └───────┴──────────┘
 ```
 
-*Note that `pl.sum("pop2024")` can be used as a shorthand for `pl.col("pop2024").sum()`*.
+Note that `pl.sum("pop2024")` can be used as a shorthand for `pl.col("pop2024").sum()`.
 
 ```py
 cityCounts = (
@@ -463,7 +463,7 @@ shape: (46, 2)
 └───────┴───────┘
 ```
 
-*Note that we could also solve the previous example using the `value_counts()` function*.
+Note that we could also solve the previous example using the `value_counts()` function.
 
 ```py
 cityCounts = (
